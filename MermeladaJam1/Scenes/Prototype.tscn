@@ -5,6 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://h4rjrnc6u3f7" path="res://Objects/potion.tscn" id="3_knk7r"]
 [ext_resource type="PackedScene" uid="uid://d14v4k4heui76" path="res://Objects/Spike.tscn" id="4_m3ob4"]
 [ext_resource type="Texture2D" uid="uid://d0jado27mhbkr" path="res://icon.svg" id="5_ngnfe"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://dy4twc37dlpfo"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_74035"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5syw"]
+radius = 32.0
+height = 120.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g0hbo"]
+size = Vector2(64, 120)
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fgm7"]
 size = Vector2(2048, 64)
@@ -14,6 +26,7 @@ size = Vector2(2048, 64)
 
 [node name="Prototype" type="Node"]
 
+
 [node name="Player" parent="." instance=ExtResource("1_ihvmd")]
 position = Vector2(-400, 589)
 knockback_time = 1.0
@@ -21,12 +34,28 @@ knockback_time = 1.0
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(640, 688)
 scale = Vector2(1.70774, 1)
+=======
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(256, 596)
+script = ExtResource("1_74035")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_h5syw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(0, 1, 1, 1)
+texture = SubResource("PlaceholderTexture2D_g0hbo")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 688)
+
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_1fgm7")
 
 [node name="GroundSprite" type="Sprite2D" parent="Ground"]
 texture = SubResource("PlaceholderTexture2D_2gy3w")
+
 
 [node name="Ground2" type="StaticBody2D" parent="."]
 position = Vector2(635, 526)
@@ -80,3 +109,4 @@ position = Vector2(-217, 596)
 position = Vector2(32, 64)
 scale = Vector2(0.5, 1)
 texture = ExtResource("5_ngnfe")
+=======
