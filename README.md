@@ -12,39 +12,39 @@ En la carpeta [MermeladaJam1](/MermeladaJam1/) está el proyecto Godot con toda 
 
 Usad GitHub como si fuera un disco duro, podeis incluir dentro de la carpeta de [MermeladaJam1](/MermeladaJam1/) lo que querais que se incluya en el juego. Para subir un archivo basta con abrir la carpeta y darle a subir ficheros:
 
-![Añadir ficheros](captura1.png)
+![Añadir ficheros](images/captura1.png)
 
 Podemos subir archivos desde la nueva interfaz, arrastrando o demás. Una vez hecho con todos los archivos, aceptamos los cambios poniendo un comentario bonito y apachurramos el botón verde:
 
-![Añadir ficheros](captura2.png)
+![Añadir ficheros](images/captura2.png)
 
 ## Cómo trabajar con Github Desktop :computer:
 
 Primeramente clonaremos el repo dandole a Add > Clone repository...:
 
-![Clonar repo](captura3.png)
+![Clonar repo](images/captura3.png)
 
 Podemos conectarnos a nuestra cuenta de GitHub o descargarlo desde la URL:
 
-![Clona un repositiorio](captura4.png)
+![Clona un repositiorio](images/captura4.png)
 
 Lo mejor es conectarse. Luego seleccionamos una ruta local donde se descargará el repo y pulsamos "Clone".
 
 Una vez clonado, veremos que tenemos el repo en local en la rama main:
 
-![Repo clonado](captura5.png)
+![Repo clonado](images/captura5.png)
 
 A partir de aquí, si ponemos archivos o carpetas en la ruta donde se ha bajado (en mi caso /home/nekerafa/repos/mermelada-jam), al abrir GitHub Desktop nos indicará los cambios a hacer:
 
-![Cambios sin aplicar](captura6.png)
+![Cambios sin aplicar](images/captura6.png)
 
 Podemos añadir los cambios poniendo un commit y pulsando el botón de commit to main. *Cuidado*: los cambios siguen estando en nuesto PC, hace falta subirlos pulsando el botón Push origin:
 
-![Cambios sin subir](captura7.png)
+![Cambios sin subir](images/captura7.png)
 
 Si hubiera cambios en el servidor de GitHub, puede que os salga el mensaje primero de Pull origin. Si lo pulsamos nos trae los cambios del servidor:
 
-![Cambios sin descargar](captura8.png)
+![Cambios sin descargar](images/captura8.png)
 
 Y si no nos sale nada, pues pulsamos Fetch origin para asegurarnos.
 
@@ -52,15 +52,15 @@ Y si no nos sale nada, pues pulsamos Fetch origin para asegurarnos.
 
 Podemos trabajar con nuevas ramas (que son como una copia de lo que hay en la rama principal), yendo a la sección de ramas:
 
-![Listado de ramas](captura9.png)
+![Listado de ramas](images/captura9.png)
 
 En cada rama podemos hacer commits y subir sin tener que pisar lo que hay en main. Una vez creada la rama, podemos crear un pull request en GitHub Desktop o en GitHub Web. Lo importante es que en compare este la rama desde la que partimos, y en base la rama main:
 
-![Crear pull request](captura10.png)
+![Crear pull request](images/captura10.png)
 
 Lo importante es que todas las pull request quedan visibles en la web, por lo que ahí podemos revisar el código y demás:
 
-![Pull request creada y cerrada](captura11.png)
+![Pull request creada y cerrada](images/captura11.png)
 
 ## Cómo trabajar con git cli :page_with_curl:
 
