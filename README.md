@@ -83,7 +83,7 @@ $ git commit -m "Comment message" # Crea un comentario con los cambios en stagin
 $ git push # Envia los cambio al servidor
 ```
 
-## Trabajar con ramas
+### Trabajar con ramas
 
 ```sh
 $ git checkout <branch> # cambia a una rama
@@ -105,3 +105,7 @@ $ git merge <branch> # une los cambios de una rama a la rama actual
 # ej: obtener los cambios de la rama main
 git merge main
 ```
+
+# License
+
+> Copyright mermelada-jam Contributors - 2023
