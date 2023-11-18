@@ -20,6 +20,9 @@ texture = ExtResource("1_1hykm")
 
 [node name="SwitchAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hingc")
+volume_db = -12.0
+mix_target = 2
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -28,11 +28,15 @@ var is_moving = true
 @onready var interaction = $Interaction
 @onready var jump_audio = $JumpAudio
 @onready var hurt_audio = $HurtAudio
+@onready var sprite = $Sprite2D
 
 func _ready():
 	ouch.visible = false
 
 func _physics_process(delta) -> void:
+	if Input.is_action_just_pressed("ui_text_submit"):
+		sprite.visible = not sprite.visible
+	
 	apply_gravity(delta)
 	
 	if is_moving:
