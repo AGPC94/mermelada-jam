@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5remi"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5syw"]
-radius = 32.0
-height = 120.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sjjr"]
+size = Vector2(32, 32)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g0hbo"]
-size = Vector2(64, 120)
+size = Vector2(32, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s4nv5"]
 font_size = 64
@@ -25,7 +24,7 @@ knockback_time = 0.1
 invincible_time = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_h5syw")
+shape = SubResource("RectangleShape2D_0sjjr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 1)
@@ -39,18 +38,10 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-drag_left_margin = 0.0
-drag_top_margin = 0.5
-drag_right_margin = 0.0
-drag_bottom_margin = 0.3
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
 [node name="Ouch" type="Label" parent="."]
-offset_left = -92.0
-offset_top = -177.0
-offset_right = 90.0
-offset_bottom = -86.0
+offset_left = -95.0
+offset_top = -122.0
+offset_right = 87.0
+offset_bottom = -31.0
 text = "Ouch!"
 label_settings = SubResource("LabelSettings_s4nv5")
