@@ -2,7 +2,7 @@ extends Area2D
 
 var player
 
-func _process(delta):
+func _process(_delta):
 	if player != null and overlaps_body(player):
 		player.hurt(global_position)
 

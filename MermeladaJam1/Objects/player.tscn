@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3pup57saf0c0"]
+[gd_scene load_steps=8 format=3 uid="uid://d3pup57saf0c0"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5remi"]
+[ext_resource type="AudioStream" uid="uid://cfru3jblutg1c" path="res://OST y SFx/SFx/jump.wav" id="2_mk5g8"]
+[ext_resource type="AudioStream" uid="uid://cjwohclt8f45b" path="res://OST y SFx/SFx/death.wav" id="3_h71ba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0sjjr"]
 size = Vector2(32, 32)
@@ -10,6 +12,9 @@ size = Vector2(32, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s4nv5"]
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_1djdw"]
+font_size = 48
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(256, 596)
@@ -39,9 +44,27 @@ wait_time = 0.15
 one_shot = true
 
 [node name="Ouch" type="Label" parent="."]
+visible = false
 offset_left = -95.0
 offset_top = -122.0
 offset_right = 87.0
 offset_bottom = -31.0
 text = "Ouch!"
 label_settings = SubResource("LabelSettings_s4nv5")
+
+[node name="Interaction" type="Label" parent="."]
+visible = false
+offset_left = -13.0
+offset_top = -96.0
+offset_right = 14.0
+offset_bottom = -26.0
+text = "E"
+label_settings = SubResource("LabelSettings_1djdw")
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mk5g8")
+mix_target = 2
+bus = &"Sound Effects"
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h71ba")

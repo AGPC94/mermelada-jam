@@ -7,6 +7,7 @@
 script = ExtResource("1_lac7o")
 
 [node name="Light" parent="." instance=ExtResource("2_kes2t")]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpi4dw5oxvg7d"]
+[gd_scene load_steps=20 format=3 uid="uid://dpi4dw5oxvg7d"]
 
 [ext_resource type="PackedScene" uid="uid://d3pup57saf0c0" path="res://Objects/player.tscn" id="1_t5we1"]
 [ext_resource type="PackedScene" uid="uid://d14v4k4heui76" path="res://Objects/Spike.tscn" id="2_6v8q6"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://h4rjrnc6u3f7" path="res://Objects/potion.tscn" id="3_wsrk1"]
 [ext_resource type="PackedScene" uid="uid://bha5c3ftlk2fy" path="res://Objects/goal.tscn" id="4_a34jy"]
 [ext_resource type="PackedScene" uid="uid://db1ejk26x87o7" path="res://Objects/box.tscn" id="7_hc81j"]
+[ext_resource type="PackedScene" uid="uid://by0nwp5qss0a6" path="res://Objects/switch_light.tscn" id="8_ylrms"]
+[ext_resource type="AudioStream" uid="uid://cjh783ejne2yf" path="res://OST y SFx/SFx/labambient.wav" id="9_2ui0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ilc"]
 size = Vector2(160, 32)
@@ -40,9 +42,6 @@ size = Vector2(44, 1039)
 
 [node name="Prototype" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_t5we1")]
-position = Vector2(32, 952)
-
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Goal" parent="Collectables" instance=ExtResource("4_a34jy")]
@@ -50,7 +49,7 @@ position = Vector2(64, 391)
 
 [node name="Potion" parent="Collectables" node_paths=PackedStringArray("goal") instance=ExtResource("3_wsrk1")]
 modulate = Color(0, 0.494118, 1, 1)
-position = Vector2(38, 547)
+position = Vector2(97, 547)
 scale = Vector2(0.5, 0.5)
 goal = NodePath("../Goal")
 
@@ -229,6 +228,30 @@ shape = SubResource("RectangleShape2D_65krk")
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform13"]
 texture = SubResource("PlaceholderTexture2D_h3sob")
 
+[node name="Switches" type="Node2D" parent="."]
+
+[node name="SwitchLight" parent="Switches" node_paths=PackedStringArray("lights") instance=ExtResource("8_ylrms")]
+position = Vector2(1006, 975)
+rotation = 3.14159
+scale = Vector2(1, -1)
+lights = [NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Lights/Light10")]
+
+[node name="SwitchLight2" parent="Switches" node_paths=PackedStringArray("lights") instance=ExtResource("8_ylrms")]
+position = Vector2(19, 553)
+lights = [NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light11")]
+
+[node name="SwitchLight3" parent="Switches" node_paths=PackedStringArray("lights") instance=ExtResource("8_ylrms")]
+position = Vector2(1004, 546)
+rotation = 3.14159
+scale = Vector2(1, -1)
+lights = [NodePath("../../Lights/Light6"), NodePath("../../Lights/Light7")]
+
+[node name="SwitchLight4" parent="Switches" node_paths=PackedStringArray("lights") instance=ExtResource("8_ylrms")]
+position = Vector2(1004, 161)
+rotation = 3.14159
+scale = Vector2(1, -1)
+lights = [NodePath("../../Lights/Light8"), NodePath("../../Lights/Light9")]
+
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(512, 1008)
 
@@ -264,6 +287,9 @@ scale = Vector2(2, 2)
 position = Vector2(66, 841)
 scale = Vector2(2, 2)
 
+[node name="Player" parent="." instance=ExtResource("1_t5we1")]
+position = Vector2(32, 952)
+
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="BlinkLight" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_f4v6g")]
@@ -283,8 +309,15 @@ scale = Vector2(0.2, 0.2)
 player = NodePath("../../Player")
 
 [node name="Light5" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+visible = false
 position = Vector2(825, 432)
 scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
+
+[node name="Light11" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+visible = false
+position = Vector2(525, 503)
+scale = Vector2(0.408301, 0.408301)
 player = NodePath("../../Player")
 
 [node name="Light6" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
@@ -293,32 +326,46 @@ scale = Vector2(0.289258, 0.289258)
 player = NodePath("../../Player")
 
 [node name="Light7" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+visible = false
 position = Vector2(234, 331)
 scale = Vector2(0.266016, 0.266016)
 player = NodePath("../../Player")
 
 [node name="Light2" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+visible = false
 position = Vector2(428, 735)
 scale = Vector2(0.2, 0.2)
 player = NodePath("../../Player")
 
-[node name="Light10" parent="Lights" node_paths=PackedStringArray("player", "shadow") instance=ExtResource("3_rd5qj")]
+[node name="Light10" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+visible = false
 position = Vector2(205, 638)
 scale = Vector2(0.2, 0.2)
 player = NodePath("../../Player")
-shadow = NodePath("../Light2/LightMask/PlayerShadow")
 
 [node name="Light3" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+visible = false
 position = Vector2(629, 737)
 scale = Vector2(0.2, 0.2)
 player = NodePath("../../Player")
 
 [node name="Light8" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
-position = Vector2(513, 178)
-scale = Vector2(0.2, 0.2)
+visible = false
+position = Vector2(558, 13)
+scale = Vector2(0.266016, 0.266016)
 player = NodePath("../../Player")
 
 [node name="Light9" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
-position = Vector2(336, 184)
-scale = Vector2(0.2, 0.2)
+position = Vector2(345.4, 165.2)
+scale = Vector2(0.236719, 0.236719)
 player = NodePath("../../Player")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(512, 512)
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_2ui0j")
+autoplay = true
+mix_target = 2
+bus = &"Ambient"

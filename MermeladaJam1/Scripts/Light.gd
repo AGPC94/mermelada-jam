@@ -2,7 +2,8 @@ extends Sprite2D
 
 @export var shadow_distance = 500
 @export var player: CharacterBody2D
-@export var shadow: Sprite2D
+
+@onready var shadow = $LightMask/PlayerShadow
 
 var show_shadow = false
 

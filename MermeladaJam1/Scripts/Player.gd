@@ -25,6 +25,9 @@ var is_moving = true
 @onready var coyote_timer = $coyote_timer
 @onready var jump_buffer_timer = $jump_buffer_timer
 @onready var ouch = $Ouch
+@onready var interaction = $Interaction
+@onready var jump_audio = $JumpAudio
+@onready var hurt_audio = $HurtAudio
 
 func _ready():
 	ouch.visible = false
@@ -34,6 +37,7 @@ func _physics_process(delta) -> void:
 	
 	if is_moving:
 		inputs()
+		is_interact()
 		
 		is_coyote_time()
 		is_jump_buffer()
@@ -48,7 +52,11 @@ func inputs():
 func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
+
+func is_interact():
+	if Input.is_action_just_pressed("interact"):
+		Events.interact_element.emit()
+
 func is_coyote_time():
 	if is_on_floor() and velocity.y <= 0:
 		coyote_timer.start()
@@ -62,12 +70,14 @@ func is_jump_buffer():
 func full_jump():
 	if is_jump_buffer():
 		velocity.y = -jump_speed_full
+		jump_audio.play()
 		jump_buffer_timer.stop()
 		coyote_timer.stop
 
 func short_jump():
 	if Input.is_action_just_released("jump") and velocity.y < -jump_speed_short:
 		velocity.y = -jump_speed_short
+		jump_audio.play()
 		
 func handle_jump():
 	if is_coyote_time():
@@ -99,6 +109,7 @@ func hurt(object_position : Vector2):
 	is_hurt = true
 	is_moving = false
 	ouch.visible = true
+	hurt_audio.play()
 	
 	await get_tree().create_timer(knockback_time).timeout
 	
@@ -108,3 +119,10 @@ func hurt(object_position : Vector2):
 	
 	is_hurt = false
 	ouch.visible = false
+
+
+func show_interaction():
+	interaction.show()
+
+func hide_interaction():
+	interaction.hide()

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnndaxdivc7np"
+path="res://.godot/imported/lightswitch.wav-503604486732724316f98b0199cb4b85.sample"
+
+[deps]
+
+source_file="res://OST y SFx/SFx/lightswitch.wav"
+dest_files=["res://.godot/imported/lightswitch.wav-503604486732724316f98b0199cb4b85.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

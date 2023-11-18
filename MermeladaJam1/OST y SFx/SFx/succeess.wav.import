@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://263gm3uyji8h"
+path="res://.godot/imported/succeess.wav-1db6304afa22fe223bcd8bcf6205d5d5.sample"
+
+[deps]
+
+source_file="res://OST y SFx/SFx/succeess.wav"
+dest_files=["res://.godot/imported/succeess.wav-1db6304afa22fe223bcd8bcf6205d5d5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
