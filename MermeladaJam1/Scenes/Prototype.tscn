@@ -1,112 +1,324 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy4twc37dlpfo"]
+[gd_scene load_steps=18 format=3 uid="uid://dpi4dw5oxvg7d"]
 
-[ext_resource type="PackedScene" uid="uid://d3pup57saf0c0" path="res://Objects/player.tscn" id="1_ihvmd"]
-[ext_resource type="PackedScene" uid="uid://bha5c3ftlk2fy" path="res://Objects/goal.tscn" id="2_obq44"]
-[ext_resource type="PackedScene" uid="uid://h4rjrnc6u3f7" path="res://Objects/potion.tscn" id="3_knk7r"]
-[ext_resource type="PackedScene" uid="uid://d14v4k4heui76" path="res://Objects/Spike.tscn" id="4_m3ob4"]
-[ext_resource type="Texture2D" uid="uid://d0jado27mhbkr" path="res://icon.svg" id="5_ngnfe"]
-=======
-[gd_scene load_steps=6 format=3 uid="uid://dy4twc37dlpfo"]
+[ext_resource type="PackedScene" uid="uid://d3pup57saf0c0" path="res://Objects/player.tscn" id="1_t5we1"]
+[ext_resource type="PackedScene" uid="uid://d14v4k4heui76" path="res://Objects/Spike.tscn" id="2_6v8q6"]
+[ext_resource type="PackedScene" uid="uid://brx1m4he50nmr" path="res://Objects/blink_light.tscn" id="3_f4v6g"]
+[ext_resource type="PackedScene" uid="uid://cnj50l08uj3x" path="res://Objects/light.tscn" id="3_rd5qj"]
+[ext_resource type="PackedScene" uid="uid://h4rjrnc6u3f7" path="res://Objects/potion.tscn" id="3_wsrk1"]
+[ext_resource type="PackedScene" uid="uid://bha5c3ftlk2fy" path="res://Objects/goal.tscn" id="4_a34jy"]
+[ext_resource type="PackedScene" uid="uid://db1ejk26x87o7" path="res://Objects/box.tscn" id="7_hc81j"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_74035"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ilc"]
+size = Vector2(160, 32)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5syw"]
-radius = 32.0
-height = 120.0
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0srcf"]
+size = Vector2(160, 32)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g0hbo"]
-size = Vector2(64, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w71e4"]
+size = Vector2(256, 32)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w7gqo"]
+size = Vector2(320, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fgm7"]
-size = Vector2(2048, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhpy6"]
+size = Vector2(320, 32)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2gy3w"]
-size = Vector2(2048, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65krk"]
+size = Vector2(512, 32)
 
-[node name="Prototype" type="Node"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h3sob"]
+size = Vector2(512, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbl26"]
+size = Vector2(1024, 32)
 
-[node name="Player" parent="." instance=ExtResource("1_ihvmd")]
-position = Vector2(-400, 589)
-knockback_time = 1.0
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dh0mc"]
+size = Vector2(1024, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsoyd"]
+size = Vector2(44, 1039)
+
+[node name="Prototype" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_t5we1")]
+position = Vector2(32, 952)
+
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Goal" parent="Collectables" instance=ExtResource("4_a34jy")]
+position = Vector2(64, 391)
+
+[node name="Potion" parent="Collectables" node_paths=PackedStringArray("goal") instance=ExtResource("3_wsrk1")]
+modulate = Color(0, 0.494118, 1, 1)
+position = Vector2(38, 547)
+scale = Vector2(0.5, 0.5)
+goal = NodePath("../Goal")
+
+[node name="Potion3" parent="Collectables" node_paths=PackedStringArray("goal") instance=ExtResource("3_wsrk1")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(983, 352)
+scale = Vector2(0.5, 0.5)
+goal = NodePath("../Goal")
+
+[node name="Potion2" parent="Collectables" node_paths=PackedStringArray("goal") instance=ExtResource("3_wsrk1")]
+modulate = Color(1, 0.537255, 0, 1)
+position = Vector2(44, 68)
+scale = Vector2(0.5, 0.5)
+goal = NodePath("../Goal")
+
+[node name="DamageItems" type="Node2D" parent="."]
+
+[node name="Spike" parent="DamageItems" instance=ExtResource("2_6v8q6")]
+modulate = Color(1, 0.501961, 0.501961, 1)
+position = Vector2(458, 664)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="DamageItems" instance=ExtResource("2_6v8q6")]
+modulate = Color(1, 0.501961, 0.501961, 1)
+position = Vector2(425, 248)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="DamageItems" instance=ExtResource("2_6v8q6")]
+modulate = Color(1, 0.501961, 0.501961, 1)
+position = Vector2(617, 663)
+scale = Vector2(0.5, 0.5)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" type="StaticBody2D" parent="Platforms"]
+position = Vector2(80, 880)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
+shape = SubResource("RectangleShape2D_l2ilc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform"]
+texture = SubResource("PlaceholderTexture2D_0srcf")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(411, 843)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
+shape = SubResource("RectangleShape2D_l2ilc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2"]
+texture = SubResource("PlaceholderTexture2D_0srcf")
+
+[node name="Platform7" type="StaticBody2D" parent="Platforms"]
+position = Vector2(650, 845)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform7"]
+shape = SubResource("RectangleShape2D_l2ilc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7"]
+texture = SubResource("PlaceholderTexture2D_0srcf")
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(952, 880)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
+shape = SubResource("RectangleShape2D_l2ilc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3"]
+texture = SubResource("PlaceholderTexture2D_0srcf")
+
+[node name="Platform16" type="StaticBody2D" parent="Platforms"]
+position = Vector2(216, 744)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform16"]
+shape = SubResource("RectangleShape2D_l2ilc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform16"]
+texture = SubResource("PlaceholderTexture2D_0srcf")
+
+[node name="Platform14" type="StaticBody2D" parent="Platforms"]
+position = Vector2(730, 291)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform14"]
+shape = SubResource("RectangleShape2D_l2ilc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform14"]
+texture = SubResource("PlaceholderTexture2D_0srcf")
+
+[node name="Platform4" type="StaticBody2D" parent="Platforms"]
+position = Vector2(535, 712)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform5" type="StaticBody2D" parent="Platforms"]
+position = Vector2(131, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform5"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform9" type="StaticBody2D" parent="Platforms"]
+position = Vector2(159, 469)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform9"]
+shape = SubResource("RectangleShape2D_fhpy6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform9"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform8" type="StaticBody2D" parent="Platforms"]
+position = Vector2(899, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform8"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform8"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform15" type="StaticBody2D" parent="Platforms"]
+position = Vector2(1050, 222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform15"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform15"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform10" type="StaticBody2D" parent="Platforms"]
+position = Vector2(532, 472)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform10"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform10"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform11" type="StaticBody2D" parent="Platforms"]
+position = Vector2(899, 403)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform11"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform11"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform6" type="StaticBody2D" parent="Platforms"]
+position = Vector2(13, 117)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform6"]
+shape = SubResource("RectangleShape2D_w71e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6"]
+texture = SubResource("PlaceholderTexture2D_w7gqo")
+
+[node name="Platform12" type="StaticBody2D" parent="Platforms"]
+position = Vector2(257, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform12"]
+shape = SubResource("RectangleShape2D_65krk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform12"]
+texture = SubResource("PlaceholderTexture2D_h3sob")
+
+[node name="Platform13" type="StaticBody2D" parent="Platforms"]
+position = Vector2(536, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform13"]
+shape = SubResource("RectangleShape2D_65krk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform13"]
+texture = SubResource("PlaceholderTexture2D_h3sob")
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(640, 688)
-scale = Vector2(1.70774, 1)
-=======
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(256, 596)
-script = ExtResource("1_74035")
+position = Vector2(512, 1008)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_h5syw")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_sbl26")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-modulate = Color(0, 1, 1, 1)
-texture = SubResource("PlaceholderTexture2D_g0hbo")
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = SubResource("PlaceholderTexture2D_dh0mc")
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(640, 688)
+[node name="Walls" type="Node2D" parent="."]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
 
-[node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground"]
-shape = SubResource("RectangleShape2D_1fgm7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(-21, 506)
+shape = SubResource("RectangleShape2D_nsoyd")
 
-[node name="GroundSprite" type="Sprite2D" parent="Ground"]
-texture = SubResource("PlaceholderTexture2D_2gy3w")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1040, 504)
+shape = SubResource("RectangleShape2D_nsoyd")
 
+[node name="Boxes" type="Node2D" parent="."]
 
-[node name="Ground2" type="StaticBody2D" parent="."]
-position = Vector2(635, 526)
-scale = Vector2(0.08, 1)
+[node name="box" parent="Boxes" instance=ExtResource("7_hc81j")]
+position = Vector2(817, 975)
+scale = Vector2(2, 2)
 
-[node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground2"]
-shape = SubResource("RectangleShape2D_1fgm7")
+[node name="box3" parent="Boxes" instance=ExtResource("7_hc81j")]
+position = Vector2(820, 553)
+scale = Vector2(2, 2)
 
-[node name="GroundSprite" type="Sprite2D" parent="Ground2"]
-texture = SubResource("PlaceholderTexture2D_2gy3w")
+[node name="box2" parent="Boxes" instance=ExtResource("7_hc81j")]
+position = Vector2(66, 841)
+scale = Vector2(2, 2)
 
-[node name="Ground3" type="StaticBody2D" parent="."]
-position = Vector2(382, 403)
-scale = Vector2(0.08, 1)
+[node name="Lights" type="Node2D" parent="."]
 
-[node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground3"]
-shape = SubResource("RectangleShape2D_1fgm7")
+[node name="BlinkLight" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_f4v6g")]
+position = Vector2(55, 12)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
+blink_time = 0.5
 
-[node name="GroundSprite" type="Sprite2D" parent="Ground3"]
-texture = SubResource("PlaceholderTexture2D_2gy3w")
+[node name="Light" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(132, 902)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
 
-[node name="Ground4" type="StaticBody2D" parent="."]
-position = Vector2(800, 291)
-scale = Vector2(0.08, 1)
+[node name="Light4" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(194, 494)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
 
-[node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground4"]
-shape = SubResource("RectangleShape2D_1fgm7")
+[node name="Light5" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(825, 432)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
 
-[node name="GroundSprite" type="Sprite2D" parent="Ground4"]
-texture = SubResource("PlaceholderTexture2D_2gy3w")
+[node name="Light6" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(506.95, 323)
+scale = Vector2(0.289258, 0.289258)
+player = NodePath("../../Player")
 
-[node name="Goal" parent="." instance=ExtResource("2_obq44")]
-position = Vector2(1306, 582)
+[node name="Light7" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(234, 331)
+scale = Vector2(0.266016, 0.266016)
+player = NodePath("../../Player")
 
-[node name="Potion" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("3_knk7r")]
-position = Vector2(748, 185)
-goal = NodePath("../Goal")
+[node name="Light2" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(428, 735)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
 
-[node name="Potion2" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("3_knk7r")]
-position = Vector2(379, 300)
-goal = NodePath("../Goal")
+[node name="Light10" parent="Lights" node_paths=PackedStringArray("player", "shadow") instance=ExtResource("3_rd5qj")]
+position = Vector2(205, 638)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
+shadow = NodePath("../Light2/LightMask/PlayerShadow")
 
-[node name="Potion3" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("3_knk7r")]
-position = Vector2(635, 432)
-goal = NodePath("../Goal")
+[node name="Light3" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(629, 737)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
 
-[node name="Spike" parent="." instance=ExtResource("4_m3ob4")]
-position = Vector2(-217, 596)
+[node name="Light8" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(513, 178)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 64)
-scale = Vector2(0.5, 1)
-texture = ExtResource("5_ngnfe")
-=======
+[node name="Light9" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_rd5qj")]
+position = Vector2(336, 184)
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../Player")
