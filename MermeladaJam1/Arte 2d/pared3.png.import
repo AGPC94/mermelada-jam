@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nma54l83qlsc"
-path="res://.godot/imported/Props mermelada.png-31398bab8363698a5fab0e920948c16f.ctex"
+uid="uid://ban5crb0l7f22"
+path="res://.godot/imported/pared3.png-4011af3cb97cb0c13d75840879f61be9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props mermelada.png"
-dest_files=["res://.godot/imported/Props mermelada.png-31398bab8363698a5fab0e920948c16f.ctex"]
+source_file="res://Arte 2d/pared3.png"
+dest_files=["res://.godot/imported/pared3.png-4011af3cb97cb0c13d75840879f61be9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nma54l83qlsc"
-path="res://.godot/imported/Props mermelada.png-31398bab8363698a5fab0e920948c16f.ctex"
+uid="uid://us4q2t55un4o"
+path="res://.godot/imported/spotlight_mask.png-0a39d45bacaab7fdf0ddc4f45786e168.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props mermelada.png"
-dest_files=["res://.godot/imported/Props mermelada.png-31398bab8363698a5fab0e920948c16f.ctex"]
+source_file="res://Sprites/spotlight_mask.png"
+dest_files=["res://.godot/imported/spotlight_mask.png-0a39d45bacaab7fdf0ddc4f45786e168.ctex"]
 
 [params]
 

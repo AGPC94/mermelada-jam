@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nma54l83qlsc"
-path="res://.godot/imported/Props mermelada.png-31398bab8363698a5fab0e920948c16f.ctex"
+uid="uid://c5klb4m8qo3u5"
+path="res://.godot/imported/pared sin suelo.png-b6b3d571cd935cceaaa6034f3143d6b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props mermelada.png"
-dest_files=["res://.godot/imported/Props mermelada.png-31398bab8363698a5fab0e920948c16f.ctex"]
+source_file="res://Arte 2d/pared sin suelo.png"
+dest_files=["res://.godot/imported/pared sin suelo.png-b6b3d571cd935cceaaa6034f3143d6b5.ctex"]
 
 [params]
 

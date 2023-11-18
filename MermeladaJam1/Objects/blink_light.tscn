@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://brx1m4he50nmr"]
+
+[ext_resource type="Script" path="res://Scripts/BlinkLight.gd" id="1_lac7o"]
+[ext_resource type="PackedScene" uid="uid://cnj50l08uj3x" path="res://Objects/light.tscn" id="2_kes2t"]
+
+[node name="BlinkLight" type="Node2D"]
+script = ExtResource("1_lac7o")
+
+[node name="Light" parent="." instance=ExtResource("2_kes2t")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
