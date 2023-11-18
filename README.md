@@ -4,9 +4,9 @@ Repo para la [Mermelada Jam](https://itch.io/jam/mermelada-jam) de Endorth e Spa
 
 En la carpeta [MermeladaJam1](/MermeladaJam1/) está el proyecto Godot con toda la info del juego.
 
-- [Cómo trabajar con Github Web]()
-- [Como trabajar con Github Desktop]()
-- []()
+- [Cómo trabajar con Github Web](#cómo-trabajar-con-github-web-earth_africa)
+- [Cómo trabajar con Github Desktop](#cómo-trabajar-con-github-desktop-computer)
+- [Cómo trabajar con git cli](#cómo-trabajar-con-git-cli-page_with_curl)
 
 ## Cómo trabajar con Github Web :earth_africa:
 
@@ -18,7 +18,7 @@ Podemos subir archivos desde la nueva interfaz, arrastrando o demás. Una vez he
 
 ![Añadir ficheros](captura2.png)
 
-## Como trabajar con Github Desktop :computer:
+## Cómo trabajar con Github Desktop :computer:
 
 Primeramente clonaremos el repo dandole a Add > Clone repository...:
 
@@ -62,7 +62,7 @@ Lo importante es que todas las pull request quedan visibles en la web, por lo qu
 
 ![Pull request creada y cerrada](captura11.png)
 
-## Como trabajar con git cli :page_with_curl:
+## Cómo trabajar con git cli :page_with_curl:
 
 Con git cli no se trabaja, se pelea xd.
 
