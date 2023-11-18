@@ -3,7 +3,7 @@ extends Area2D
 var player
 
 func _process(delta):
-	if overlaps_body(player):
+	if player != null and overlaps_body(player):
 		player.hurt(global_position)
 
 func _on_body_entered(body):
