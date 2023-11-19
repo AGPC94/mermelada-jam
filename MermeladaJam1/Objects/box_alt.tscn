@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1xk1uv3gaq7c"]
+
+[ext_resource type="Texture2D" uid="uid://bjw2uifkgbs2n" path="res://Arte 2d/Props/caja1.png" id="1_vqafx"]
+
+[node name="BoxAlt" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -31)
+scale = Vector2(0.0315, 0.0315)
+texture = ExtResource("1_vqafx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(4, -31)
+polygon = PackedVector2Array(-28, 8, -18, 3, 12, 3, 12, 32, -28, 32)

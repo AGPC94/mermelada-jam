@@ -1,30 +1,39 @@
-extends Sprite2D
+extends Node2D
 
-@export var shadow_distance = 500
 @export var player: CharacterBody2D
+@export var light: bool = true
 
 @onready var shadow = $LightMask/PlayerShadow
+@onready var emision = $Emision
 
 var show_shadow = false
 
+func _ready() -> void:
+	emision.visible = light
+
 func _process(delta: float) -> void:
 	if show_shadow:
-		var player_shadow = Vector2(player.global_position.x, global_position.y + shadow_distance)
-		var direction = global_position.direction_to(player_shadow)
-		var shew_angle = Vector2.DOWN.angle_to(direction)
-		
-		shadow.global_position.x = player_shadow.x
-		shadow.position.y = shadow_distance - abs(shew_angle) * 12
-		shadow.skew = shew_angle
+		shadow.global_position = Vector2(player.global_position.x, player.global_position.y)
+
+		var direction = Input.get_axis("left", "right")
+		if direction == 0:
+			shadow.pause()
+		else:
+			shadow.play("walk")
+			shadow.flip_h = direction < 0
+
+
+func toggle() -> void:
+	emision.visible = not emision.visible
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and emision.visible:
 		show_shadow = true
 		shadow.show()
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and emision.visible:
 		show_shadow = false
 		shadow.hide()

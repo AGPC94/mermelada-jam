@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7x5ybp8tfrwi"]
+
+[ext_resource type="FontFile" uid="uid://dil87v40s01fr" path="res://Fonts/Sniglet/Sniglet-Regular.ttf" id="1_0uok4"]
+[ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="1_f4bx7"]
+[ext_resource type="FontFile" uid="uid://dyi0eqi3tv4rm" path="res://Fonts/Patrick_Hand/PatrickHand-Regular.ttf" id="2_pxvxo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ajlau"]
+size = Vector2(240, 240)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks71l"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.133333, 0.133333, 0.133333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_size = 2
+shadow_offset = Vector2(0, 1)
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f4bx7")
+character_velocity = 0.005
+left_character_color = Color(0.831373, 0.388235, 0.92549, 1)
+right_character_color = Color(0.447059, 0.839216, 0.254902, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)
+
+[node name="LeftImage" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.75
+anchor_right = 0.05
+anchor_bottom = 0.75
+offset_left = -0.200001
+offset_top = -239.8
+offset_right = 239.8
+offset_bottom = 0.200012
+grow_vertical = 0
+texture = SubResource("PlaceholderTexture2D_ajlau")
+
+[node name="RightImage" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.75
+anchor_right = 0.95
+anchor_bottom = 0.75
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("PlaceholderTexture2D_ajlau")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.75
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ks71l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_0uok4")
+theme_override_font_sizes/font_size = 24
+text = "Character"
+
+[node name="Content" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_pxvxo")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "E"
+horizontal_alignment = 2

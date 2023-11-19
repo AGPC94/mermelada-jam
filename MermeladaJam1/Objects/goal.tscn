@@ -1,8 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://bha5c3ftlk2fy"]
+[gd_scene load_steps=9 format=3 uid="uid://bha5c3ftlk2fy"]
 
 [ext_resource type="Script" path="res://Scripts/Goal.gd" id="1_buq8r"]
-[ext_resource type="Texture2D" uid="uid://d0jado27mhbkr" path="res://icon.svg" id="2_a0cj1"]
+[ext_resource type="Texture2D" uid="uid://cyoaericilor1" path="res://Arte 2d/puerta salida/puerta salida animacion/1.png" id="2_4m8m7"]
+[ext_resource type="Texture2D" uid="uid://deaq1xy0xi3u6" path="res://Arte 2d/puerta salida/puerta salida animacion/2.png" id="3_a142m"]
 [ext_resource type="AudioStream" uid="uid://bcpmat62xhsma" path="res://OST y SFx/SFx/grabvial.wav" id="3_sn5er"]
+[ext_resource type="Texture2D" uid="uid://dqudh4uuj4ny0" path="res://Arte 2d/puerta salida/puerta salida animacion/3.png" id="4_p2c3b"]
+[ext_resource type="Texture2D" uid="uid://e5stcflxmolr" path="res://Arte 2d/puerta salida/puerta salida animacion/4.png" id="5_nqu0i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pylwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4m8m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a142m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p2c3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nqu0i")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym3y5"]
 size = Vector2(128, 128)
@@ -10,8 +33,10 @@ size = Vector2(128, 128)
 [node name="Goal" type="Area2D"]
 script = ExtResource("1_buq8r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_a0cj1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.064, 0.064)
+sprite_frames = SubResource("SpriteFrames_pylwc")
+animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ym3y5")
@@ -19,6 +44,5 @@ shape = SubResource("RectangleShape2D_ym3y5")
 [node name="PotionAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sn5er")
 mix_target = 2
-bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

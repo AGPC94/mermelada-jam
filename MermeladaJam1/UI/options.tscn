@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqnkyuwuq33lb"]
+
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_4bv17"]
+[ext_resource type="FontFile" uid="uid://dil87v40s01fr" path="res://Fonts/Sniglet/Sniglet-Regular.ttf" id="1_eylxo"]
+[ext_resource type="FontFile" uid="uid://dyi0eqi3tv4rm" path="res://Fonts/Patrick_Hand/PatrickHand-Regular.ttf" id="2_r6vm2"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tpp77"]
+content_margin_bottom = 10.0
+color = Color(1, 1, 1, 1)
+thickness = 3
+
+[node name="Options" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -98.5
+offset_right = 100.0
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_4bv17")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eylxo")
+theme_override_font_sizes/font_size = 48
+text = "Opciones"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxLine_tpp77")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Master" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6vm2")
+theme_override_font_sizes/font_size = 24
+text = "Master:"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../SFSlider")
+focus_next = NodePath("../SFSlider")
+max_value = 10.0
+value = 5.0
+
+[node name="SoundEffects" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6vm2")
+theme_override_font_sizes/font_size = 24
+text = "Efectos de sonido:"
+horizontal_alignment = 1
+
+[node name="SFSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../MasterSlider")
+focus_neighbor_bottom = NodePath("../MusicSlider")
+focus_next = NodePath("../MusicSlider")
+focus_previous = NodePath("../MasterSlider")
+max_value = 10.0
+value = 5.0
+
+[node name="Music" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6vm2")
+theme_override_font_sizes/font_size = 24
+text = "Música:"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SFSlider")
+focus_neighbor_bottom = NodePath("../../ReturnButton")
+focus_next = NodePath("../../ReturnButton")
+focus_previous = NodePath("../SFSlider")
+max_value = 10.0
+value = 5.0
+
+[node name="ReturnButton" type="LinkButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 2
+theme_override_fonts/font = ExtResource("2_r6vm2")
+theme_override_font_sizes/font_size = 28
+text = "Volver"
+underline = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="value_changed" from="GridContainer/MasterSlider" to="." method="_on_master_changed"]
+[connection signal="value_changed" from="GridContainer/SFSlider" to="." method="_on_soundeffects_changed"]
+[connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_music_changed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_pressed"]

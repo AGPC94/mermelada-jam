@@ -1,35 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnj50l08uj3x"]
+[gd_scene load_steps=10 format=3 uid="uid://cnj50l08uj3x"]
 
-[ext_resource type="Texture2D" uid="uid://b7iuc2wotiwd7" path="res://Sprites/spotlight_alpha.png" id="1_ri42s"]
+[ext_resource type="Texture2D" uid="uid://bca7yb2xcvlw5" path="res://Arte 2d/foco y luz/lampara.png" id="2_8mid7"]
 [ext_resource type="Script" path="res://Scripts/Light.gd" id="2_pakwd"]
-[ext_resource type="Texture2D" uid="uid://us4q2t55un4o" path="res://Sprites/spotlight_mask.png" id="3_i4405"]
-[ext_resource type="Texture2D" uid="uid://cqgv65t784pcd" path="res://Sprites/shadow.png" id="4_foh10"]
+[ext_resource type="Texture2D" uid="uid://btkyeeq1bb7vg" path="res://Arte 2d/foco y luz/Luz.png" id="3_bigg3"]
+[ext_resource type="Texture2D" uid="uid://bj6g5gal5sdgj" path="res://Arte 2d/Animacion prota/protagonista luz_0000.png" id="4_p7ee5"]
+[ext_resource type="Texture2D" uid="uid://b671k6ohk1t6d" path="res://Arte 2d/Animacion prota/protagonista luz_0001.png" id="5_ko2mr"]
+[ext_resource type="Texture2D" uid="uid://u66ekbaepii5" path="res://Arte 2d/Animacion prota/protagonista luz_0002.png" id="6_bs4j5"]
+[ext_resource type="Texture2D" uid="uid://cnta3ufkk2kp5" path="res://Arte 2d/Animacion prota/protagonista luz_0003.png" id="7_lsfna"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi3k"]
-size = Vector2(530, 500)
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1mcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p7ee5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ko2mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bs4j5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lsfna")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
 
-[node name="Light" type="Sprite2D"]
-texture = ExtResource("1_ri42s")
-offset = Vector2(0, 256)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28jsa"]
+size = Vector2(120, 120)
+
+[node name="Light" type="Node2D"]
 script = ExtResource("2_pakwd")
+
+[node name="Bulb" type="Sprite2D" parent="."]
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("2_8mid7")
+
+[node name="Emision" type="Sprite2D" parent="."]
+position = Vector2(0, 58)
+scale = Vector2(0.064, 0.064)
+texture = ExtResource("3_bigg3")
+
+[node name="LightMask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(0, 58)
+scale = Vector2(0.064, 0.064)
+texture = ExtResource("3_bigg3")
+
+[node name="PlayerShadow" type="AnimatedSprite2D" parent="LightMask"]
+visible = false
+position = Vector2(0, 640)
+scale = Vector2(0.48, 0.48)
+sprite_frames = SubResource("SpriteFrames_n1mcl")
+animation = &"walk"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 200)
-shape = SubResource("RectangleShape2D_6qi3k")
-
-[node name="LightMask" type="Sprite2D" parent="."]
-clip_children = 1
-texture = ExtResource("3_i4405")
-offset = Vector2(0, 300)
-
-[node name="PlayerShadow" type="Sprite2D" parent="LightMask"]
-visible = false
-position = Vector2(0, 500)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_foh10")
-flip_v = true
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_28jsa")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

@@ -1,0 +1,58 @@
+[
+	{
+		"character": 0,
+		"dialog": "Esto no podría haber salido peor... Se suponía que ser invisible era uno de los grandes sueños del ser humano, pero ahora ni siquiera sé por donde piso o donde están mis dedos. Hasta beber agua se ha vuelto una tarea complicada."
+	},
+	{
+		"character": 0,
+		"dialog": "Estoy hasta empezando a olvidarme de cómo era mi propio cuerpo..."
+	},
+	{
+		"character": 1,
+		"dialog": "¿[color=#d463ec][outline_size=2]Dr. Kitten[/outline_size][/color]? ¿Dónde está doctor?"
+	},
+	{
+		"character": 0,
+		"dialog": "Llevo haciéndome esta misma pregunta desde hace un buen rato."
+	},
+	{
+		"character": 1,
+		"dialog": "Parece que la invisibilidad no le está sentando tan bien como se esperaba."
+	},
+	{
+		"character": 0,
+		"dialog": "Estaría mejor si al menos los guantes fueran visibles pero todo lo que me pongo también se vuelve invisible y no puedo controlarlo..."
+	},
+	{
+		"character": 1,
+		"dialog": "Me parece a mí que la única forma de volver a la normalidad es utilizar una cámara de conversión y exponerse a las sustancias adecuadas."
+	},
+	{
+		"character": 0,
+		"dialog": "¿Y eso cómo lo hago? ¿Y qué sustancias debería usar?"
+	},
+	{
+		"character": 1,
+		"dialog": "Madre mía... Y se supone que yo soy la becaria..."
+	},
+	{
+		"character": 1,
+		"dialog": "Deberá encontrar [color=#72d641]3 sustancias químicas[/color] esparcidas por el laboratorio y llevarlas a la sala donde se encuentra la cámara de reconversión, una vez allí deberá inyectar las 3 sustancias en la cámara y meterse dentro."
+	},
+	{
+		"character": 1,
+		"dialog": "Yo activaré la cámara de reconversión desde fuera."
+	},
+	{
+		"character": 0,
+		"dialog": "¿Y cómo esperas que haga todo eso si ni siquiera sé dónde tengo los pies?"
+	},
+	{
+		"character": 1,
+		"dialog": "¡Anda! Fíjese, [color=#d463ec][outline_size=2]Dr. Kitten[/outline_size][/color], estoy viendo su sombra. Parece que a pesar de ser invisible sigue proyectando su sombra si se expone a una luz intensa."
+	},
+	{
+		"character": 1,
+		"dialog": "Parece que tendrá que guiarse por las luces. No olvide ir activando los distintos interruptores del laboratorio para cambiar el estado de las luces y saber donde está en cada momento."
+	}
+]

@@ -7,14 +7,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0sjjr"]
 size = Vector2(32, 32)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g0hbo"]
-size = Vector2(32, 32)
-
 [sub_resource type="LabelSettings" id="LabelSettings_s4nv5"]
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_1djdw"]
 font_size = 48
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4mshk"]
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(256, 596)
@@ -30,10 +30,6 @@ invincible_time = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0sjjr")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-texture = SubResource("PlaceholderTexture2D_g0hbo")
 
 [node name="coyote_timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -64,7 +60,10 @@ label_settings = SubResource("LabelSettings_1djdw")
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_mk5g8")
 mix_target = 2
-bus = &"Sound Effects"
 
 [node name="HurtAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h71ba")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+texture = SubResource("PlaceholderTexture2D_4mshk")

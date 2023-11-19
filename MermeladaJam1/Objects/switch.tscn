@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://by0nwp5qss0a6"]
+
+[ext_resource type="Script" path="res://Scripts/Switch.gd" id="1_55dk4"]
+[ext_resource type="Texture2D" uid="uid://bxfcfbv4eguaj" path="res://Arte 2d/Props/boton encendido.png" id="2_t18xo"]
+[ext_resource type="Texture2D" uid="uid://h4sdfcvhtom4" path="res://Arte 2d/Props/boton apagado.png" id="3_3toi7"]
+[ext_resource type="AudioStream" uid="uid://bnndaxdivc7np" path="res://OST y SFx/SFx/lightswitch.wav" id="3_w4501"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thug2"]
+size = Vector2(100, 100)
+
+[node name="SwitchLight" type="Area2D"]
+script = ExtResource("1_55dk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_thug2")
+
+[node name="SwitchOnSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("2_t18xo")
+
+[node name="SwitchOffSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("3_3toi7")
+
+[node name="SwitchAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w4501")
+volume_db = -12.0
+mix_target = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
