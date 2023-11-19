@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8sevyi1rwxc7"
-path="res://.godot/imported/suelo derecha.png-a6a4832221aa029d5975c5281be1a213.ctex"
+uid="uid://r15xpvhmbe4w"
+path="res://.godot/imported/atlas.png-40903e2e2cebd65a743d5d9d3d2f9d33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arte 2d/Suelo intermedio/suelo derecha.png"
-dest_files=["res://.godot/imported/suelo derecha.png-a6a4832221aa029d5975c5281be1a213.ctex"]
+source_file="res://Sprites/atlas.png"
+dest_files=["res://.godot/imported/atlas.png-40903e2e2cebd65a743d5d9d3d2f9d33.ctex"]
 
 [params]
 
