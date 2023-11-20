@@ -5,7 +5,7 @@ signal return_pressed
 
 var master_bus = AudioServer.get_bus_index("Master")
 var ambient_bus = AudioServer.get_bus_index("Ambient")
-var sf_bus = AudioServer.get_bus_index("Sound Effect")
+var sf_bus = AudioServer.get_bus_index("Sound Effects")
 var music_bus = AudioServer.get_bus_index("Music")
 
 @onready var master_slider = $GridContainer/MasterSlider

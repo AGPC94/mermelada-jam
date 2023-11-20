@@ -51,6 +51,7 @@ func _update_options():
 func _resume():
 	enabled = false
 	main_menu = true
+	option = 0
 	$MainMenu.show()
 	$Options.hide()
 	hide()

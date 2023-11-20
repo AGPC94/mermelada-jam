@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("interact"):
 		dialog_complete.emit()
 
-func show_dialog(character: String, dialog: String, image: Texture2D, image_place: ImagePlace) -> void:
+func show_dialog(character: String, dialog: String, image_place: ImagePlace) -> void:
 	show()
 	$PanelContainer.show()
 	$PanelContainer/VBoxContainer/Name.text = character
@@ -39,14 +39,11 @@ func show_dialog(character: String, dialog: String, image: Texture2D, image_plac
 	match place:
 		ImagePlace.LEFT:
 			$PanelContainer/VBoxContainer/Name.add_theme_color_override("font_color", left_character_color)
-			$LeftImage.texture = image
 			$LeftImage.show()
-			$RightImage.hide()
 		ImagePlace.RIGHT:
 			$PanelContainer/VBoxContainer/Name.add_theme_color_override("font_color", right_character_color)
-			$RightImage.texture = image
 			$RightImage.show()
-			$LeftImage.hide()
+
 
 func _update_content() -> void:
 	content_pos += 1

@@ -1,11 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7x5ybp8tfrwi"]
+[gd_scene load_steps=7 format=3 uid="uid://c7x5ybp8tfrwi"]
 
 [ext_resource type="FontFile" uid="uid://dil87v40s01fr" path="res://Fonts/Sniglet/Sniglet-Regular.ttf" id="1_0uok4"]
 [ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="1_f4bx7"]
+[ext_resource type="Texture2D" uid="uid://p31p20bx2jrd" path="res://Arte 2d/personaje hablando/tio.png" id="2_i380g"]
 [ext_resource type="FontFile" uid="uid://dyi0eqi3tv4rm" path="res://Fonts/Patrick_Hand/PatrickHand-Regular.ttf" id="2_pxvxo"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ajlau"]
-size = Vector2(240, 240)
+[ext_resource type="Texture2D" uid="uid://r24ev0lvckj0" path="res://Arte 2d/personaje hablando/chica becaria.png" id="3_tkmbj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks71l"]
 content_margin_left = 16.0
@@ -49,40 +48,33 @@ color = Color(0, 0, 0, 0.25098)
 
 [node name="LeftImage" type="TextureRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.75
-anchor_right = 0.05
-anchor_bottom = 0.75
-offset_left = -0.200001
-offset_top = -239.8
-offset_right = 239.8
-offset_bottom = 0.200012
-grow_vertical = 0
-texture = SubResource("PlaceholderTexture2D_ajlau")
+layout_mode = 0
+offset_left = -45.0
+offset_top = 346.0
+offset_right = 455.0
+offset_bottom = 746.0
+texture = ExtResource("2_i380g")
+expand_mode = 3
+stretch_mode = 6
 
 [node name="RightImage" type="TextureRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.95
-anchor_top = 0.75
-anchor_right = 0.95
-anchor_bottom = 0.75
-grow_horizontal = 0
-grow_vertical = 0
-texture = SubResource("PlaceholderTexture2D_ajlau")
+layout_mode = 0
+offset_left = 587.0
+offset_top = 346.0
+offset_right = 1087.0
+offset_bottom = 746.0
+texture = ExtResource("3_tkmbj")
+expand_mode = 3
+stretch_mode = 6
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.75
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 0
+visible = false
+layout_mode = 0
+offset_left = 87.0
+offset_top = 723.0
+offset_right = 937.0
+offset_bottom = 923.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ks71l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
