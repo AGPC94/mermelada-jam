@@ -26,6 +26,8 @@ func _process(_delta: float) -> void:
 				options_rect.show()
 				options.show()
 				potion.hide()
+			elif option == 2:
+				get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 
 
 func _update_options():

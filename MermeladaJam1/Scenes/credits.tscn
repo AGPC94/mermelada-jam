@@ -1,9 +1,86 @@
-[gd_scene format=3 uid="uid://71klxh3trtxy"]
+[gd_scene load_steps=6 format=3 uid="uid://71klxh3trtxy"]
 
-[node name="Credits" type="Control"]
-layout_mode = 3
+[ext_resource type="Texture2D" uid="uid://cqexppdirumvt" path="res://Arte 2d/creditos.png" id="1_p3f23"]
+[ext_resource type="FontFile" uid="uid://dyi0eqi3tv4rm" path="res://Fonts/Patrick_Hand/PatrickHand-Regular.ttf" id="2_43xgh"]
+[ext_resource type="Script" path="res://Scripts/Credits.gd" id="2_ua8b1"]
+[ext_resource type="FontFile" uid="uid://dil87v40s01fr" path="res://Fonts/Sniglet/Sniglet-Regular.ttf" id="3_b1lha"]
+[ext_resource type="AudioStream" uid="uid://y1p4l85yxt30" path="res://OST y SFx/OST/creditos.ogg" id="5_x7xg3"]
+
+[node name="Credits" type="TextureRect"]
+modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_p3f23")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_ua8b1")
+
+[node name="Text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -161.0
+offset_right = 0.5
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_43xgh")
+theme_override_fonts/bold_font = ExtResource("3_b1lha")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][b][u]Arte[/u][/b]
+• Reimy (Leticia Montero)
+
+[b][u]Música y Sonido[/u][/b]
+• ArtistSynth
+
+[b][u]Programación[/u][/b]
+• Wanhell
+• NEKERAFA (Rafael Alcalde)
+
+[b][u]Game Design[/u][/b]
+• Gerix_95
+
+
+[font_size=48][b]¡Gracias por jugar![/b][/font_size][/center]"
+fit_content = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -174.0
+offset_right = 79.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_43xgh")
+theme_override_font_sizes/font_size = 28
+text = "Presiona E para salir"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x7xg3")
+autoplay = true

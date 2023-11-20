@@ -9,7 +9,7 @@ signal dialog_complete
 
 var delta_time = 0
 var content: String = ""
-var content_pos: int
+var content_pos: int = 0
 var place: ImagePlace
 
 enum ImagePlace { LEFT, RIGHT }
@@ -18,16 +18,19 @@ func _process(delta: float) -> void:
 	if content_pos < content.length():
 		delta_time += delta
 		if delta_time > character_velocity:
+			delta_time -= character_velocity
 			_update_content()
 
 		if Input.is_action_just_pressed("interact"):
 			content_pos = content.length()
 			$PanelContainer/VBoxContainer/Content.text = content
 
-	elif Input.is_action_just_pressed("interact"):
+	elif content.length() and Input.is_action_just_pressed("interact"):
+		content = ""
+		content_pos = 0
 		dialog_complete.emit()
 
-func show_dialog(character: String, dialog: String, image_place: ImagePlace) -> void:
+func show_dialog(character: String, dialog: String, image: Texture2D, image_place: ImagePlace) -> void:
 	show()
 	$PanelContainer.show()
 	$PanelContainer/VBoxContainer/Name.text = character
@@ -39,9 +42,11 @@ func show_dialog(character: String, dialog: String, image_place: ImagePlace) -> 
 	match place:
 		ImagePlace.LEFT:
 			$PanelContainer/VBoxContainer/Name.add_theme_color_override("font_color", left_character_color)
+			$LeftImage.texture = image
 			$LeftImage.show()
 		ImagePlace.RIGHT:
 			$PanelContainer/VBoxContainer/Name.add_theme_color_override("font_color", right_character_color)
+			$RightImage.texture = image
 			$RightImage.show()
 
 
@@ -55,3 +60,8 @@ func _update_content() -> void:
 			else:
 				break
 	$PanelContainer/VBoxContainer/Content.text = content.substr(0, content_pos)
+
+
+func _on_hidden() -> void:
+	$LeftImage.hide()
+	$RightImage.hide()

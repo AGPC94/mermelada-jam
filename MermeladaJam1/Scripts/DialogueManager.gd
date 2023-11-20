@@ -1,13 +1,15 @@
 extends Node
 
 signal dialog_complete
+signal final_dialog_complete
 
 var initial = true
 var content = null
 var current = 0
 
 @export var dialogue: Dialogue
-
+@export var left_image: Texture2D
+@export var right_image: Texture2D
 @export var initial_door: InitialDoor
 
 func _ready() -> void:
@@ -34,8 +36,11 @@ func show_current_dialog():
 	var character = "Dr. Kitten" if current_dialog["character"] == 0 else "Becaria"
 	var dialog_content = current_dialog["dialog"]
 	var place = Dialogue.ImagePlace.LEFT if current_dialog["character"] == 0 else Dialogue.ImagePlace.RIGHT
+	var image = null
+	if initial:
+		image = left_image if current_dialog["character"] == 0 else right_image
 
-	dialogue.show_dialog(character, dialog_content, place)
+	dialogue.show_dialog(character, dialog_content, image, place)
 
 
 func _on_dialog_complete() -> void:
@@ -52,4 +57,4 @@ func _on_dialog_complete() -> void:
 			initial_door.close()
 			initial = false
 		else:
-			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+			final_dialog_complete.emit()
