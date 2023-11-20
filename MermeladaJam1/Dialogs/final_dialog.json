@@ -1,13 +1,22 @@
 [
 	{
+		"texture": 0,
+		"transition": "in",
+		"time": 0.5,
 		"character": 0,
 		"dialog": "¡Por fin! Lo he conseguido. Ahora mi cuerpo debería volver a ser el mismo de antes."
 	},
 	{
+		"texture": 1,
+		"transition": "out-in",
+		"time": 1,
 		"character": 0,
 		"dialog": "Espera un momento... ¿¡Que son estos bigotes?! ¿Y estos pelos? ¿Qué está pasando aquí?"
 	},
 	{
+		"texture": 2,
+		"transition": "in",
+		"time": 0.5,
 		"character": 1,
 		"dialog": "Vaya Dr. Kitten, parece que algo no ha salido bien."
 	},
@@ -36,6 +45,10 @@
 		"dialog": "¿Entonces qué hacemos?"
 	},
 	{
+		"texture": 3,
+		"transition": "in",
+		"time": 0.5,
+		"character": 1,
 		"character": 0,
 		"dialog": "NADA, eso es lo que haremos."
 	},
@@ -52,6 +65,10 @@
 		"dialog": "Lo siento mucho doctor... ¿Puedo hacer algo para ayudarte?"
 	},
 	{
+		"texture": 4,
+		"transition": "in",
+		"time": 0.5,
+		"character": 1,
 		"character": 0,
 		"dialog": "No... bueno... sí. Traéme una bola de lana y un poco de leche."
 	},

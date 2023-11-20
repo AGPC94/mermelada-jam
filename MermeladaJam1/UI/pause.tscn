@@ -45,10 +45,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = -110.5
-offset_right = 124.0
-offset_bottom = 110.5
+offset_left = -142.5
+offset_top = -141.5
+offset_right = 142.5
+offset_bottom = 141.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ld50o")
@@ -97,6 +97,21 @@ texture = ExtResource("3_24mje")
 expand_mode = 2
 stretch_mode = 5
 
+[node name="Restart" type="Label" parent="PanelContainer/MainMenu/GridContainer"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("2_o1rqi")
+theme_override_font_sizes/font_size = 24
+text = "Reiniciar posición"
+horizontal_alignment = 1
+
+[node name="Potion3" type="TextureRect" parent="PanelContainer/MainMenu/GridContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_24mje")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="Options" type="Label" parent="PanelContainer/MainMenu/GridContainer"]
 layout_mode = 2
 mouse_filter = 0
@@ -105,7 +120,7 @@ theme_override_font_sizes/font_size = 24
 text = "Opciones"
 horizontal_alignment = 1
 
-[node name="Potion3" type="TextureRect" parent="PanelContainer/MainMenu/GridContainer"]
+[node name="Potion4" type="TextureRect" parent="PanelContainer/MainMenu/GridContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("3_24mje")
@@ -133,6 +148,8 @@ wait_time = 0.01
 
 [connection signal="mouse_entered" from="PanelContainer/MainMenu/GridContainer/Continue" to="." method="_on_continue_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MainMenu/GridContainer/Continue" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MainMenu/GridContainer/Restart" to="." method="_on_restart_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MainMenu/GridContainer/Restart" to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MainMenu/GridContainer/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MainMenu/GridContainer/Options" to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MainMenu/GridContainer/QuitGame" to="." method="_on_quit_game_mouse_entered"]

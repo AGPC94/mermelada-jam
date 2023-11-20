@@ -481,10 +481,9 @@ position = Vector2(137, 679)
 scale = Vector2(0.048, 0.048)
 texture = ExtResource("25_yklaj")
 
-[node name="Goal" parent="." node_paths=PackedStringArray("dialogue_manager") instance=ExtResource("4_jb7gs")]
+[node name="Goal" parent="." instance=ExtResource("4_jb7gs")]
 position = Vector2(125, 369)
 scale = Vector2(0.75, 0.75)
-dialogue_manager = NodePath("../DialogueManager")
 
 [node name="Boxes" type="Node2D" parent="."]
 
@@ -648,7 +647,7 @@ scale = Vector2(0.5, 0.5)
 goal = NodePath("../../Goal")
 
 [node name="Player" parent="." instance=ExtResource("2_fh18c")]
-position = Vector2(128, 940)
+position = Vector2(120, 940)
 jump_speed_short = 400
 move_speed_max = 250
 
@@ -699,11 +698,13 @@ mix_target = 2
 process_mode = 1
 visible = false
 
-[node name="Pause" parent="." instance=ExtResource("4_n373u")]
+[node name="Pause" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_n373u")]
 process_mode = 2
 visible = false
+player = NodePath("../Player")
+reset_position = Vector2(120, 940)
 
 [connection signal="dialog_complete" from="DialogueManager" to="Player" method="_on_dialog_complete"]
-[connection signal="final_dialog_complete" from="DialogueManager" to="." method="_on_dialogue_manager_final_dialog_complete"]
+[connection signal="level_complete" from="Goal" to="." method="_on_level_complete"]
 [connection signal="dialog_complete" from="Dialogue" to="DialogueManager" method="_on_dialog_complete"]
 [connection signal="hidden" from="Dialogue" to="Dialogue" method="_on_hidden"]

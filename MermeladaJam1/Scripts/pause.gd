@@ -4,10 +4,13 @@ var enabled = false
 var main_menu = true
 var option = 0
 
+@export var player: CharacterBody2D
+@export var reset_position: Vector2
 
 @onready var potion1 = $PanelContainer/MainMenu/GridContainer/Potion1
 @onready var potion2 = $PanelContainer/MainMenu/GridContainer/Potion2
 @onready var potion3 = $PanelContainer/MainMenu/GridContainer/Potion3
+@onready var potion4 = $PanelContainer/MainMenu/GridContainer/Potion4
 @onready var timer = $Timer
 
 
@@ -21,7 +24,7 @@ func _process(_delta: float) -> void:
 		if option > 0 and Input.is_action_just_pressed("ui_up"):
 			option -= 1
 			_update_options()
-		elif option < 2 and Input.is_action_just_pressed("ui_down"):
+		elif option < 3 and Input.is_action_just_pressed("ui_down"):
 			option += 1
 			_update_options()
 
@@ -29,10 +32,12 @@ func _process(_delta: float) -> void:
 			if option == 0:
 				_resume()
 			elif option == 1:
+				_restart()
+			elif option == 2:
 				main_menu = false
 				$PanelContainer.hide()
 				$Options.show()
-			elif option == 2:
+			elif option == 3:
 				get_tree().quit()
 
 
@@ -41,24 +46,39 @@ func _update_options():
 		potion1.modulate = Color.TRANSPARENT
 		potion2.modulate = Color.TRANSPARENT
 		potion3.modulate = Color.TRANSPARENT
+		potion4.modulate = Color.TRANSPARENT
 	elif option == 0:
 		potion1.modulate = Color.WHITE
 		potion2.modulate = Color.TRANSPARENT
 		potion3.modulate = Color.TRANSPARENT
+		potion4.modulate = Color.TRANSPARENT
 	elif option == 1:
 		potion1.modulate = Color.TRANSPARENT
 		potion2.modulate = Color.WHITE
 		potion3.modulate = Color.TRANSPARENT
+		potion4.modulate = Color.TRANSPARENT
 	elif option == 2:
 		potion1.modulate = Color.TRANSPARENT
 		potion2.modulate = Color.TRANSPARENT
 		potion3.modulate = Color.WHITE
+		potion4.modulate = Color.TRANSPARENT
+	elif option == 3:
+		potion1.modulate = Color.TRANSPARENT
+		potion2.modulate = Color.TRANSPARENT
+		potion3.modulate = Color.TRANSPARENT
+		potion4.modulate = Color.WHITE
+
+
+func _restart():
+	player.global_position = Vector2(reset_position)
+	_resume()
 
 
 func _resume():
 	enabled = false
 	main_menu = true
 	option = 0
+	_update_options()
 	$PanelContainer.show()
 	$Options.hide()
 	hide()
@@ -80,13 +100,18 @@ func _on_continue_mouse_entered() -> void:
 	_update_options()
 
 
-func _on_options_mouse_entered() -> void:
+func _on_restart_mouse_entered() -> void:
 	option = 1
 	_update_options()
 
 
-func _on_quit_game_mouse_entered() -> void:
+func _on_options_mouse_entered() -> void:
 	option = 2
+	_update_options()
+
+
+func _on_quit_game_mouse_entered() -> void:
+	option = 3
 	_update_options()
 
 

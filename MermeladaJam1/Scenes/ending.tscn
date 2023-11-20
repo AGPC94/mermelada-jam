@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://7b1xwl5pyvvk"]
+
+[ext_resource type="Script" path="res://Scripts/Ending.gd" id="1_ykhwu"]
+[ext_resource type="PackedScene" uid="uid://c7x5ybp8tfrwi" path="res://UI/dialogue.tscn" id="2_5reyu"]
+[ext_resource type="Texture2D" uid="uid://cxg7d18iunewy" path="res://Arte 2d/Escena final acabada/1.png" id="2_np6mb"]
+[ext_resource type="Texture2D" uid="uid://485c75hi2upw" path="res://Arte 2d/Escena final acabada/2.png" id="3_24br6"]
+[ext_resource type="Texture2D" uid="uid://cke4thi78xtam" path="res://Arte 2d/Escena final acabada/3.png" id="4_sl5fg"]
+[ext_resource type="Texture2D" uid="uid://cgnnk3fi8vnex" path="res://Arte 2d/Escena final acabada/4.png" id="5_86ru6"]
+[ext_resource type="Texture2D" uid="uid://4mwfsn18ll58" path="res://Arte 2d/Escena final acabada/5.png" id="6_ay7qm"]
+[ext_resource type="AudioStream" uid="uid://c6xhkvtxmt7vm" path="res://OST y SFx/OST/menu.ogg" id="8_pe2a3"]
+
+[node name="Ending" type="Node"]
+script = ExtResource("1_ykhwu")
+textures = Array[Texture2D]([ExtResource("2_np6mb"), ExtResource("3_24br6"), ExtResource("4_sl5fg"), ExtResource("5_86ru6"), ExtResource("6_ay7qm")])
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Dialogue" parent="." instance=ExtResource("2_5reyu")]
+visible = false
+character_velocity = 0.01
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pe2a3")
+autoplay = true
+mix_target = 2
+bus = &"Music"
+
+[connection signal="dialog_complete" from="Dialogue" to="." method="_on_dialog_complete"]

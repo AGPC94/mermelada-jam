@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 			content_pos = content.length()
 			$PanelContainer/VBoxContainer/Content.text = content
 
-	elif content.length() and Input.is_action_just_pressed("interact"):
+	elif visible and content_pos == content.length() and Input.is_action_just_pressed("interact"):
 		content = ""
 		content_pos = 0
 		dialog_complete.emit()
