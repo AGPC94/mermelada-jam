@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://cydyoq0wacbjy"]
+
+[ext_resource type="Texture2D" uid="uid://bb24lqvy1husf" path="res://Arte 2d/puerta entrada/puerta normal/1 cerrada.png" id="1_s4t0i"]
+[ext_resource type="Texture2D" uid="uid://c5uhwwd4ft2r2" path="res://Arte 2d/puerta entrada/puerta normal/2.png" id="2_vtpx8"]
+[ext_resource type="Texture2D" uid="uid://betbyd4d3j06e" path="res://Arte 2d/puerta entrada/puerta normal/3.png" id="3_jnp2t"]
+[ext_resource type="Texture2D" uid="uid://bau0xyte1ev5k" path="res://Arte 2d/puerta entrada/puerta normal/4.png" id="4_2k4yo"]
+[ext_resource type="Script" path="res://Scripts/InitialDoor.gd" id="5_2hdqp"]
+[ext_resource type="AudioStream" uid="uid://mvk8c6uisw88" path="res://OST y SFx/SFx/opendoor.wav" id="5_dpauh"]
+[ext_resource type="AudioStream" uid="uid://o52e6j2kmqaa" path="res://OST y SFx/SFx/closedoor.wav" id="6_041jq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7c22r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s4t0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vtpx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jnp2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2k4yo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PuertaEntrada" type="AnimatedSprite2D"]
+position = Vector2(121, 897)
+scale = Vector2(0.064, 0.064)
+sprite_frames = SubResource("SpriteFrames_7c22r")
+script = ExtResource("5_2hdqp")
+
+[node name="OpenDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dpauh")
+bus = &"Sound Effects"
+
+[node name="CloseDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_041jq")
+bus = &"Sound Effects"

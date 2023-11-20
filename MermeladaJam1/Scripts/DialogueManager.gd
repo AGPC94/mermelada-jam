@@ -8,7 +8,7 @@ var current = 0
 
 @export var dialogue: Dialogue
 
-@export var puerta_entrada: AnimatedSprite2D
+@export var initial_door: InitialDoor
 
 func _ready() -> void:
 	load_initial()
@@ -19,7 +19,14 @@ func load_initial() -> void:
 	var resource = FileAccess.open("res://Dialogs/initial_dialog.json", FileAccess.READ)
 	if resource:
 		content = JSON.parse_string(resource.get_as_text())
-		puerta_entrada.play()
+		initial_door.open()
+
+
+func load_finish() -> void:
+	var resource = FileAccess.open("res://Dialogs/final_dialog.json", FileAccess.READ)
+	if resource:
+		content = JSON.parse_string(resource.get_as_text())
+		show_current_dialog()
 
 
 func show_current_dialog():
@@ -36,9 +43,13 @@ func _on_dialog_complete() -> void:
 		current += 1
 		show_current_dialog()
 	else:
+		content = null
+		current = 0
 		dialogue.hide()
 		dialog_complete.emit()
 
 		if initial:
-			puerta_entrada.play_backwards()
+			initial_door.close()
 			initial = false
+		else:
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

@@ -1,0 +1,66 @@
+[
+	{
+		"character": 0,
+		"dialog": "¡Por fin! Lo he conseguido. Ahora mi cuerpo debería volver a ser el mismo de antes."
+	},
+	{
+		"character": 0,
+		"dialog": "Espera un momento... ¿¡Que son estos bigotes?! ¿Y estos pelos? ¿Qué está pasando aquí?"
+	},
+	{
+		"character": 1,
+		"dialog": "Vaya Dr. Kitten, parece que algo no ha salido bien."
+	},
+	{
+		"character": 0,
+		"dialog": "¿Qué algo no ha salido bien? ¿¡Pero tú me estás viendo!?"
+	},
+	{
+		"character": 0,
+		"dialog": "Me he convertido en un maldito ¿¡¡¡FURRO!!!?"
+	},
+	{
+		"character": 0,
+		"dialog": "Estoy empezando a echar de menos el ser invisible..."
+	},
+	{
+		"character": 1,
+		"dialog": "No se apure doctor, lo volveremos a intentar."
+	},
+	{
+		"character": 0,
+		"dialog": "¿Intentarlo otra vez? Ni de broma, esto solo puede ir a peor..."
+	},
+	{
+		"character": 1,
+		"dialog": "¿Entonces qué hacemos?"
+	},
+	{
+		"character": 0,
+		"dialog": "NADA, eso es lo que haremos."
+	},
+	{
+		"character": 1,
+		"dialog": "Entonces... ¿Quiere decir que...?"
+	},
+	{
+		"character": 0,
+		"dialog": "Sí, no me queda otra, deberé aceptar mi destino y vivir el resto de mi vida como un furro."
+	},
+	{
+		"character": 1,
+		"dialog": "Lo siento mucho doctor... ¿Puedo hacer algo para ayudarte?"
+	},
+	{
+		"character": 0,
+		"dialog": "No... bueno... sí. Traéme una bola de lana y un poco de leche."
+	},
+	{
+		"character": 1,
+		"dialog": "¡A la orden doctor!"
+	},
+	{
+		"character": 0,
+		"dialog": "Puestos a vivir como una gato habrá que hacerlo bien..."
+	},
+]

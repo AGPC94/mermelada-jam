@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgogcpwfbag6b"]
+
+[ext_resource type="Texture2D" uid="uid://dm66ld6qsrjry" path="res://Arte 2d/Portada y menu/menú.png" id="1_ubp77"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="2_e4ixn"]
+[ext_resource type="Texture2D" uid="uid://bd3s6dvjc17ns" path="res://Arte 2d/Props/pocima juego.png" id="2_mr2s2"]
+[ext_resource type="Texture2D" uid="uid://bq7q4sva4qpl7" path="res://Arte 2d/Portada y menu/dibujo sin texto.png" id="3_2w1eu"]
+[ext_resource type="AudioStream" uid="uid://c6xhkvtxmt7vm" path="res://OST y SFx/OST/menu.ogg" id="3_6t10s"]
+[ext_resource type="PackedScene" uid="uid://cqnkyuwuq33lb" path="res://UI/options.tscn" id="5_544km"]
+
+[node name="MainMenu" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ubp77")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_e4ixn")
+main_menu_background = ExtResource("1_ubp77")
+options_background = ExtResource("3_2w1eu")
+
+[node name="Potion" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 660.0
+offset_right = 142.0
+offset_bottom = 752.0
+texture = ExtResource("2_mr2s2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6t10s")
+autoplay = true
+bus = &"Music"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Options" parent="ColorRect" instance=ExtResource("5_544km")]
+visible = false
+layout_mode = 1
+offset_left = -176.5
+offset_top = -150.5
+offset_right = 176.5
+offset_bottom = 150.5
+
+[node name="Play" type="ReferenceRect" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 668.0
+offset_right = 622.0
+offset_bottom = 747.0
+
+[node name="Options" type="ReferenceRect" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 780.0
+offset_right = 622.0
+offset_bottom = 859.0
+
+[node name="Credits" type="ReferenceRect" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 885.0
+offset_right = 621.0
+offset_bottom = 964.0
+
+[connection signal="return_pressed" from="ColorRect/Options" to="." method="_on_options_return_pressed"]
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Options" to="." method="_on_options_mouse_entered"]
+[connection signal="mouse_exited" from="Options" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_exited" from="Credits" to="." method="_on_mouse_exited"]

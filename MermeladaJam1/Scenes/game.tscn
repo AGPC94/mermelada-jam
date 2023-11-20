@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://3vg54hp4ld0i"]
+[gd_scene load_steps=38 format=3 uid="uid://3vg54hp4ld0i"]
 
 [ext_resource type="Texture2D" uid="uid://r15xpvhmbe4w" path="res://Sprites/atlas.png" id="1_gs0q0"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_o77ne"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ja75at0ohv8r" path="res://UI/pause.tscn" id="4_n373u"]
 [ext_resource type="Texture2D" uid="uid://c1f3m13r2sse1" path="res://Arte 2d/Paredes/pared1.png" id="5_4o1by"]
 [ext_resource type="PackedScene" uid="uid://db1ejk26x87o7" path="res://Objects/box.tscn" id="5_oegh0"]
+[ext_resource type="PackedScene" uid="uid://cydyoq0wacbjy" path="res://Objects/InitialDoor.tscn" id="5_uuaq3"]
 [ext_resource type="Texture2D" uid="uid://cymfmdcs81fkr" path="res://Arte 2d/Paredes/pared2.png" id="6_flifk"]
 [ext_resource type="PackedScene" uid="uid://c1xk1uv3gaq7c" path="res://Objects/box_alt.tscn" id="6_oalb3"]
 [ext_resource type="PackedScene" uid="uid://d14v4k4heui76" path="res://Objects/Spike.tscn" id="6_owq07"]
@@ -18,10 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://brx1m4he50nmr" path="res://Objects/blink_light.tscn" id="8_21lm3"]
 [ext_resource type="PackedScene" uid="uid://by0nwp5qss0a6" path="res://Objects/switch.tscn" id="8_67mr0"]
 [ext_resource type="Texture2D" uid="uid://mbfky6nikoa6" path="res://Arte 2d/Paredes/pared4.png" id="8_u2vgd"]
-[ext_resource type="Texture2D" uid="uid://bb24lqvy1husf" path="res://Arte 2d/puerta entrada/puerta normal/1 cerrada.png" id="9_u1mo5"]
-[ext_resource type="Texture2D" uid="uid://c5uhwwd4ft2r2" path="res://Arte 2d/puerta entrada/puerta normal/2.png" id="10_6mwfj"]
-[ext_resource type="Texture2D" uid="uid://betbyd4d3j06e" path="res://Arte 2d/puerta entrada/puerta normal/3.png" id="11_o0otw"]
-[ext_resource type="Texture2D" uid="uid://bau0xyte1ev5k" path="res://Arte 2d/puerta entrada/puerta normal/4.png" id="12_d026q"]
 [ext_resource type="Texture2D" uid="uid://bbnjdvufx8hjf" path="res://Arte 2d/Props/maquina refrecos.png" id="13_2n7b2"]
 [ext_resource type="PackedScene" uid="uid://c7x5ybp8tfrwi" path="res://UI/dialogue.tscn" id="14_8woef"]
 [ext_resource type="Texture2D" uid="uid://ve368f5eq7ny" path="res://Arte 2d/Paredes/pared5.png" id="14_mkomp"]
@@ -202,33 +199,13 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_uyhfq")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7c22r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_u1mo5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_6mwfj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_o0otw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_d026q")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Game" type="Node"]
 script = ExtResource("1_o77ne")
 
-[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("dialogue", "puerta_entrada")]
+[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("dialogue", "initial_door")]
 script = ExtResource("16_x0q2v")
 dialogue = NodePath("../Dialogue")
-puerta_entrada = NodePath("../PuertaEntrada")
+initial_door = NodePath("../PuertaEntrada")
 
 [node name="ToRemove" type="Sprite2D" parent="."]
 visible = false
@@ -251,10 +228,7 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
-[node name="PuertaEntrada" type="AnimatedSprite2D" parent="."]
-position = Vector2(121, 897)
-scale = Vector2(0.064, 0.064)
-sprite_frames = SubResource("SpriteFrames_7c22r")
+[node name="PuertaEntrada" parent="." instance=ExtResource("5_uuaq3")]
 
 [node name="Props" type="Node2D" parent="."]
 
@@ -503,14 +477,15 @@ position = Vector2(137, 679)
 scale = Vector2(0.048, 0.048)
 texture = ExtResource("25_yklaj")
 
-[node name="Goal" parent="." instance=ExtResource("4_jb7gs")]
+[node name="Goal" parent="." node_paths=PackedStringArray("dialogue_manager") instance=ExtResource("4_jb7gs")]
 position = Vector2(125, 369)
 scale = Vector2(0.75, 0.75)
+dialogue_manager = NodePath("../DialogueManager")
 
 [node name="Boxes" type="Node2D" parent="."]
 
 [node name="Box" parent="Boxes" instance=ExtResource("5_oegh0")]
-position = Vector2(783, 923)
+position = Vector2(805, 921)
 scale = Vector2(1.2, 1.2)
 
 [node name="Box2" parent="Boxes" instance=ExtResource("5_oegh0")]
@@ -548,6 +523,7 @@ light = false
 position = Vector2(130, 622)
 scale = Vector2(0.94, 0.94)
 player = NodePath("../../Player")
+light = false
 
 [node name="Light5" parent="Lights" node_paths=PackedStringArray("player") instance=ExtResource("3_n0f0f")]
 position = Vector2(235, 460)
@@ -601,7 +577,7 @@ tile_set = SubResource("TileSet_jdgwa")
 cell_quadrant_size = 128
 format = 2
 layer_0/name = "Background"
-layer_0/tile_data = PackedInt32Array(1638402, 196608, 5, 1638403, 196608, 5, 1638404, 262144, 5, 1638405, 196608, 5, 1638406, 196608, 5, 1638407, 196608, 5, 1638408, 196608, 5, 1638409, 327680, 5, 1703949, 131072, 5, 1703950, 196608, 5, 1703951, 196608, 5, 1703952, 327680, 5, 1703965, 196608, 5, 1703964, 196608, 5, 1703963, 327680, 65541, 1703958, 327680, 5, 1703957, 196608, 5, 1703956, 196608, 5, 1703955, 131072, 5, 1376276, 262144, 5, 1376275, 196608, 5, 1376274, 196608, 5, 1376273, 196608, 5, 1376272, 262144, 5, 1376271, 196608, 5, 1376270, 196608, 5, 1245196, 196608, 5, 1245195, 196608, 5, 1441801, 327680, 5, 1441800, 196608, 5, 1441799, 131072, 5, 1179663, 327680, 65541, 1179664, 196608, 5, 1179665, 196608, 5, 1179666, 327680, 5, 1179671, 327680, 65541, 1179672, 196608, 5, 1179673, 196608, 5, 1179674, 196608, 5, 1179675, 196608, 5, 1179676, 196608, 5, 1179677, 196608, 5, 851989, 196608, 5, 851988, 196608, 5, 851987, 262144, 5, 851986, 196608, 5, 851985, 196608, 5, 851984, 196608, 5, 851983, 131072, 5, 851979, 327680, 5, 851978, 196608, 5, 851977, 196608, 5, 851976, 196608, 5, 851975, 196608, 5, 851974, 262144, 5, 851973, 196608, 5, 851972, 196608, 5, 851971, 196608, 5, 851970, 196608, 5, 1179656, 327680, 5, 1179655, 196608, 5, 1179654, 196608, 5, 1179653, 262144, 5, 1179652, 196608, 5, 1179651, 196608, 5, 1179650, 196608, 5, 720922, 131072, 5, 720923, 196608, 5, 720924, 262144, 5, 720925, 196608, 5, 655384, 327680, 5, 655383, 131072, 5, 393239, 327680, 65541, 393240, 131072, 65541, 262169, 327680, 65541, 262170, 196608, 5, 262171, 196608, 5, 262172, 196608, 5, 262173, 196608, 5, 262164, 327680, 5, 262163, 196608, 5, 262162, 196608, 5, 262161, 196608, 5, 262160, 262144, 5, 262159, 196608, 5, 262158, 196608, 5, 262157, 196608, 5, 262156, 196608, 5, 262155, 131072, 5, 524307, 196608, 5, 524306, 196608, 5, 524305, 196608, 5, 524304, 196608, 5, 524303, 196608, 5, 524302, 196608, 5, 524301, 196608, 5, 524300, 262144, 5, 524299, 196608, 5, 524298, 196608, 5, 524297, 196608, 5, 524296, 196608, 5, 524295, 196608, 5, 524294, 196608, 5, 524293, 262144, 5, 524292, 196608, 5, 524291, 196608, 5, 524290, 196608, 5, 327682, 196608, 5, 327683, 196608, 5, 327684, 196608, 5, 327685, 327680, 5, 1376277, 327680, 5, 851990, 131072, 65541, 1376269, 131072, 5)
+layer_0/tile_data = PackedInt32Array(1638402, 196608, 5, 1638403, 196608, 5, 1638404, 262144, 5, 1638405, 196608, 5, 1638406, 196608, 5, 1638407, 196608, 5, 1638408, 196608, 5, 1638409, 327680, 5, 1703949, 131072, 5, 1703950, 196608, 5, 1703951, 196608, 5, 1703952, 327680, 5, 1703965, 196608, 5, 1703964, 196608, 5, 1703963, 327680, 65541, 1703958, 327680, 5, 1703957, 196608, 5, 1703956, 196608, 5, 1703955, 131072, 5, 1376276, 262144, 5, 1376275, 196608, 5, 1376274, 196608, 5, 1376273, 196608, 5, 1376272, 262144, 5, 1376271, 196608, 5, 1376270, 196608, 5, 1245196, 196608, 5, 1245195, 196608, 5, 1441799, 131072, 5, 1179663, 327680, 65541, 1179664, 196608, 5, 1179665, 196608, 5, 1179666, 327680, 5, 1179671, 327680, 65541, 1179672, 196608, 5, 1179673, 196608, 5, 1179674, 196608, 5, 1179675, 196608, 5, 1179676, 196608, 5, 1179677, 196608, 5, 851989, 196608, 5, 851988, 196608, 5, 851987, 262144, 5, 851986, 196608, 5, 851985, 196608, 5, 851984, 196608, 5, 851983, 131072, 5, 851979, 327680, 5, 851978, 196608, 5, 851977, 196608, 5, 851976, 196608, 5, 851975, 196608, 5, 851974, 262144, 5, 851973, 196608, 5, 851972, 196608, 5, 851971, 196608, 5, 851970, 196608, 5, 1179656, 327680, 5, 1179655, 196608, 5, 1179654, 196608, 5, 1179653, 262144, 5, 1179652, 196608, 5, 1179651, 196608, 5, 1179650, 196608, 5, 720922, 131072, 5, 720923, 196608, 5, 720924, 262144, 5, 720925, 196608, 5, 655384, 327680, 5, 655383, 131072, 5, 393239, 327680, 65541, 393240, 131072, 65541, 262169, 327680, 65541, 262170, 196608, 5, 262171, 196608, 5, 262172, 196608, 5, 262173, 196608, 5, 262163, 327680, 5, 262162, 196608, 5, 262161, 196608, 5, 262160, 262144, 5, 262159, 196608, 5, 262158, 196608, 5, 262157, 196608, 5, 262156, 196608, 5, 262155, 131072, 5, 524307, 196608, 5, 524306, 196608, 5, 524305, 196608, 5, 524304, 196608, 5, 524303, 196608, 5, 524302, 196608, 5, 524301, 196608, 5, 524300, 262144, 5, 524299, 196608, 5, 524298, 196608, 5, 524297, 196608, 5, 524296, 196608, 5, 524295, 196608, 5, 524294, 196608, 5, 524293, 262144, 5, 524292, 196608, 5, 524291, 196608, 5, 524290, 196608, 5, 327682, 196608, 5, 327683, 196608, 5, 327684, 196608, 5, 327685, 327680, 5, 1376277, 327680, 5, 851990, 131072, 65541, 1376269, 131072, 5, 1441800, 327680, 5)
 layer_1/name = "Walls"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
@@ -708,10 +684,6 @@ texture = ExtResource("28_dytrv")
 position = Vector2(80.0313, 112.031)
 scale = Vector2(0.0489687, 0.0489687)
 texture = ExtResource("28_dytrv")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
-position = Vector2(512, 512)
-current = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

@@ -1,57 +1,78 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqnkyuwuq33lb"]
+[gd_scene load_steps=6 format=3 uid="uid://cqnkyuwuq33lb"]
 
 [ext_resource type="Script" path="res://Scripts/options.gd" id="1_4bv17"]
 [ext_resource type="FontFile" uid="uid://dil87v40s01fr" path="res://Fonts/Sniglet/Sniglet-Regular.ttf" id="1_eylxo"]
 [ext_resource type="FontFile" uid="uid://dyi0eqi3tv4rm" path="res://Fonts/Patrick_Hand/PatrickHand-Regular.ttf" id="2_r6vm2"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_tpp77"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0s7yk"]
+content_margin_left = 32.0
+content_margin_top = 24.0
+content_margin_right = 32.0
+content_margin_bottom = 24.0
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mp1hx"]
 content_margin_bottom = 10.0
 color = Color(1, 1, 1, 1)
-thickness = 3
+grow_begin = 25.0
+grow_end = 25.0
+thickness = 4
 
-[node name="Options" type="VBoxContainer"]
+[node name="Options" type="PanelContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -98.5
-offset_right = 100.0
-offset_bottom = 98.5
+offset_left = -168.5
+offset_top = -141.5
+offset_right = 168.5
+offset_bottom = 141.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_0s7yk")
 script = ExtResource("1_4bv17")
 
-[node name="Title" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_eylxo")
 theme_override_font_sizes/font_size = 48
 text = "Opciones"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="."]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 7
-theme_override_styles/separator = SubResource("StyleBoxLine_tpp77")
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxLine_mp1hx")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 8
 columns = 2
 
-[node name="Master" type="Label" parent="GridContainer"]
+[node name="Master" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r6vm2")
 theme_override_font_sizes/font_size = 24
 text = "Master:"
 horizontal_alignment = 1
 
-[node name="MasterSlider" type="HSlider" parent="GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -60,14 +81,14 @@ focus_next = NodePath("../SFSlider")
 max_value = 10.0
 value = 5.0
 
-[node name="SoundEffects" type="Label" parent="GridContainer"]
+[node name="SoundEffects" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r6vm2")
 theme_override_font_sizes/font_size = 24
 text = "Efectos de sonido:"
 horizontal_alignment = 1
 
-[node name="SFSlider" type="HSlider" parent="GridContainer"]
+[node name="SFSlider" type="HSlider" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -78,14 +99,14 @@ focus_previous = NodePath("../MasterSlider")
 max_value = 10.0
 value = 5.0
 
-[node name="Music" type="Label" parent="GridContainer"]
+[node name="Music" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r6vm2")
 theme_override_font_sizes/font_size = 24
 text = "Música:"
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -96,7 +117,7 @@ focus_previous = NodePath("../SFSlider")
 max_value = 10.0
 value = 5.0
 
-[node name="ReturnButton" type="LinkButton" parent="."]
+[node name="ReturnButton" type="LinkButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 2
@@ -106,7 +127,7 @@ text = "Volver"
 underline = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="value_changed" from="GridContainer/MasterSlider" to="." method="_on_master_changed"]
-[connection signal="value_changed" from="GridContainer/SFSlider" to="." method="_on_soundeffects_changed"]
-[connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_music_changed"]
-[connection signal="pressed" from="ReturnButton" to="." method="_on_return_pressed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/MasterSlider" to="." method="_on_master_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/SFSlider" to="." method="_on_sf_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_changed"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_return_pressed"]

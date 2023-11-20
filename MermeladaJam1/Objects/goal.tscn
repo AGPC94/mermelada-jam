@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bha5c3ftlk2fy"]
+[gd_scene load_steps=11 format=3 uid="uid://bha5c3ftlk2fy"]
 
 [ext_resource type="Script" path="res://Scripts/Goal.gd" id="1_buq8r"]
 [ext_resource type="Texture2D" uid="uid://cyoaericilor1" path="res://Arte 2d/puerta salida/puerta salida animacion/1.png" id="2_4m8m7"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://bcpmat62xhsma" path="res://OST y SFx/SFx/grabvial.wav" id="3_sn5er"]
 [ext_resource type="Texture2D" uid="uid://dqudh4uuj4ny0" path="res://Arte 2d/puerta salida/puerta salida animacion/3.png" id="4_p2c3b"]
 [ext_resource type="Texture2D" uid="uid://e5stcflxmolr" path="res://Arte 2d/puerta salida/puerta salida animacion/4.png" id="5_nqu0i"]
+[ext_resource type="AudioStream" uid="uid://mvk8c6uisw88" path="res://OST y SFx/SFx/opendoor.wav" id="7_2mnsr"]
+[ext_resource type="AudioStream" uid="uid://263gm3uyji8h" path="res://OST y SFx/SFx/succeess.wav" id="8_10siy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pylwc"]
 animations = [{
@@ -37,14 +39,20 @@ script = ExtResource("1_buq8r")
 scale = Vector2(0.064, 0.064)
 sprite_frames = SubResource("SpriteFrames_pylwc")
 animation = &"open"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ym3y5")
 
 [node name="PotionAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sn5er")
+mix_target = 2
+
+[node name="OpenDoorAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2mnsr")
+mix_target = 2
+
+[node name="SuccessAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_10siy")
 mix_target = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
